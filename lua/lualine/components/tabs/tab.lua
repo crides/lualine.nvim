@@ -62,7 +62,8 @@ function Tab:render()
     elseif self.options.mode == 1 then
       name = name
     else
-      name = string.format('%s %s', tostring(self.tabnr), name)
+      mod = vim.bo.modified and " +" or ""
+      name = string.format('%s %s%s', tostring(self.tabnr), name, mod)
     end
   end
   name = Tab.apply_padding(name, self.options.padding)
